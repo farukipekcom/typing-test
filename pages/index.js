@@ -1,6 +1,6 @@
 export default function Home() {
   const words = [
-    "dog",
+    "urgent",
     "wall",
     "powerbank",
     "teacher",
