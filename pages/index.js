@@ -26,6 +26,9 @@ export default function Home() {
             </ul>
           </div>
         </div>
+        <div className="input">
+          <input type="text" />
+        </div>
       </div>
     </>
   );
