@@ -15,19 +15,22 @@ export default function Home() {
   return (
     <>
       <div className="main">
-        <div className="list">
-          <div className="background">
-            <ul className="words">
-              {words.map((item, id) => (
-                <li className="word" key={id}>
-                  {item}
-                </li>
-              ))}
-            </ul>
+        <div className="container">
+          <div className="list">
+            <div className="background">
+              <ul className="words">
+                {words.map((item, id) => (
+                  <li className="word" key={id}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-        <div className="input">
-          <input type="text" />
+          <div className="input">
+            <input type="text" />
+          </div>
+          <div className="time">00:45</div>
         </div>
       </div>
     </>
