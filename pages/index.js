@@ -1,11 +1,16 @@
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import Play from "./components/icons/play";
 import Reset from "./components/icons/reset";
 import { Timer } from "./components/timer";
 import words from "./components/words.json";
 export default function Home() {
-  const [basla, setBasla] = useState(false);
+  const [countDownStart, setCountDownStart] = useState(false);
   const [timer, setTimer] = useState();
+  const ref = useRef();
+  const handleClick = () => {
+    ref.current.focus();
+    setCountDownStart(true);
+  };
   return (
     <>
       <div className="main">
@@ -23,16 +28,16 @@ export default function Home() {
           </div>
           <div className="input">
             <input
+              ref={ref}
               autoFocus
-              tabIndex="1"
               disabled={timer === "00:00" ? true : false}
             />
           </div>
           <div className="time">
-            <Timer basildi={basla} timer={timer} setTimer={setTimer} />
+            <Timer countDownStart={countDownStart} timer={timer} setTimer={setTimer} />
           </div>
           <div className="buttons">
-            <div className="play" onClick={() => setBasla(true)}>
+            <div className="play" onClick={handleClick}>
               <Play />
               <span>PLAY</span>
             </div>

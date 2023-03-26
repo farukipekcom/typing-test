@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 
-export const Timer = ({ basildi, timer, setTimer }) => {
+export const Timer = ({ countDownStart, timer, setTimer }) => {
   const Ref = useRef(null);
   const [working, setWorking] = useState(false);
   const getTimeRemaining = (e) => {
@@ -38,9 +38,9 @@ export const Timer = ({ basildi, timer, setTimer }) => {
     return deadline;
   };
   useEffect(() => {
-    basildi && clearTimer(getDeadTime());
+    countDownStart && clearTimer(getDeadTime());
     timer === "-00:01" && setWorking(!working);
-  }, [basildi]);
+  }, [countDownStart]);
 
   const onClickReset = () => {
     clearTimer(getDeadTime());
