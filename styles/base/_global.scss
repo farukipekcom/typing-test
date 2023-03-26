@@ -14,3 +14,42 @@ body {
     #660f0f 100%
   );
 }
+
+.list {
+  margin-top: 200px;
+  width: max-content;
+  margin: 0 auto;
+  .background {
+    position: relative;
+    background-image: url("/list-background.svg");
+    width: 440px;
+    height: 456px;
+    position: absolute;
+    top: -105px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 60px;
+    .words {
+      width: calc(100% - 128px);
+      display: flex;
+      flex-direction: column;
+      margin-left: 64px;
+      margin-right: 64px;
+      .word {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: #000000;
+        border-bottom: 1px solid #f3f3f3;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 36px;
+      }
+    }
+  }
+}
