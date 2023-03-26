@@ -106,5 +106,68 @@ body {
       text-align: center;
       margin-top: 24px;
     }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 36px;
+      margin-top: 48px;
+      width: 100%;
+      .play {
+        position: relative;
+        cursor: pointer;
+        width: 190px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+          position: absolute;
+        }
+        top: 0px;
+        font-family: "Bungee", cursive;
+        font-size: 28px;
+        letter-spacing: 0.2em;
+        -webkit-text-stroke: 1px #620c0c;
+        span {
+          z-index: 99;
+        }
+      }
+      .reset {
+        position: relative;
+        cursor: pointer;
+        width: 190px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+          position: absolute;
+        }
+        top: 0px;
+        font-family: "Bungee", cursive;
+        font-size: 28px;
+        letter-spacing: 0.2em;
+        -webkit-text-stroke: 1px #620c0c;
+        span {
+          z-index: 99;
+        }
+      }
+    }
+  }
+}
+.play,
+.reset {
+  &:hover {
+    .svg {
+      .svg1 {
+      }
+      .svg2 {
+        fill: #620c0c;
+      }
+      .svg3 {
+        fill: #620c0c;
+      }
+    }
   }
 }
