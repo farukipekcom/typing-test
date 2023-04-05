@@ -8,8 +8,36 @@ export default function Home() {
   const [timer, setTimer] = useState();
   const ref = useRef();
   const handleClick = () => {
-    ref.current.focus();
+    // ref.current.focus();
+    resetList();
     setCountDownStart(true);
+  };
+  const [wordList, setWordList] = useState([]);
+  const [word, setWord] = useState();
+  let tempList = [];
+  const resetList = () => {
+    for (let i = 0; i < words.length; i++) {
+      tempList[i] = words[Math.floor(Math.random() * words.length)];
+    }
+    setWordList(tempList);
+  };
+  useEffect(() => {
+    resetList();
+  }, [setWordList]);
+  const onChange = (e) => {
+    e.preventDefault();
+    setWord(e.target.value);
+  };
+  const onKeyPressed = (e) => {
+    if (e.code === "Space" || e.code === "Enter") {
+      if (e.target.value === wordList[0]) {
+        setWord("");
+        wordList.shift();
+        console.log("CORRECT!");
+      } else {
+        console.log("WRONG!");
+      }
+    }
   };
   return (
     <>
@@ -18,7 +46,7 @@ export default function Home() {
           <div className="list">
             <div className="background">
               <ul className="words">
-                {words.map((item, id) => (
+                {wordList.map((item, id) => (
                   <li className="word" key={id}>
                     {item}
                   </li>
@@ -27,21 +55,29 @@ export default function Home() {
             </div>
           </div>
           <div className="input">
-            <input
-              ref={ref}
-              autoFocus
-              disabled={timer === "00:00" ? true : false}
-            />
+            {timer > "00:00" && (
+              <input
+                autoFocus
+                onKeyDown={(e) => onKeyPressed(e)}
+                onChange={onChange}
+                value={word === " " ? "" : word}
+              />
+            )}
           </div>
           <div className="time">
-            <Timer countDownStart={countDownStart} timer={timer} setTimer={setTimer} />
+            <Timer
+              countDownStart={countDownStart}
+              setCountDownStart={setCountDownStart}
+              timer={timer}
+              setTimer={setTimer}
+            />
           </div>
           <div className="buttons">
             <div className="play" onClick={handleClick}>
               <Play />
               <span>PLAY</span>
             </div>
-            <div className="reset">
+            <div className="reset" onClick={resetList}>
               <Reset />
               <span>RESET</span>
             </div>

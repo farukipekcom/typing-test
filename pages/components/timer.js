@@ -1,6 +1,11 @@
 import { useRef, useState, useEffect } from "react";
 
-export const Timer = ({ countDownStart, timer, setTimer }) => {
+export const Timer = ({
+  countDownStart,
+  setCountDownStart,
+  timer,
+  setTimer,
+}) => {
   const Ref = useRef(null);
   const [working, setWorking] = useState(false);
   const getTimeRemaining = (e) => {
@@ -40,6 +45,7 @@ export const Timer = ({ countDownStart, timer, setTimer }) => {
   useEffect(() => {
     countDownStart && clearTimer(getDeadTime());
     timer === "-00:01" && setWorking(!working);
+    setCountDownStart(false);
   }, [countDownStart]);
 
   const onClickReset = () => {
@@ -51,7 +57,7 @@ export const Timer = ({ countDownStart, timer, setTimer }) => {
       {working === true
         ? "00:03"
         : working && timer === "00:00"
-        ? "SURE BITTI!"
+        ? "TIME OVER!"
         : timer}
     </>
   );
