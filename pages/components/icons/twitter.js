@@ -1,0 +1,74 @@
+const Twitter = () => {
+  return (
+    <svg
+      width="24"
+      height="20"
+      viewBox="0 0 24 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M16 0H14V2H16V0Z" fill="white" />
+      <path d="M18 0H16V2H18V0Z" fill="white" />
+      <path d="M22 0H20V2H22V0Z" fill="white" />
+      <path d="M14 2H12V4H14V2Z" fill="white" />
+      <path d="M16 2H14V4H16V2Z" fill="white" />
+      <path d="M18 2H16V4H18V2Z" fill="white" />
+      <path d="M20 2H18V4H20V2Z" fill="white" />
+      <path d="M22 2H20V4H22V2Z" fill="white" />
+      <path d="M24 2H22V4H24V2Z" fill="white" />
+      <path d="M2 4H0V6H2V4Z" fill="white" />
+      <path d="M4 4H2V6H4V4Z" fill="white" />
+      <path d="M6 4H4V6H6V4Z" fill="white" />
+      <path d="M14 4H12V6H14V4Z" fill="white" />
+      <path d="M16 4H14V6H16V4Z" fill="white" />
+      <path d="M18 4H16V6H18V4Z" fill="white" />
+      <path d="M20 4H18V6H20V4Z" fill="white" />
+      <path d="M22 4H20V6H22V4Z" fill="white" />
+      <path d="M4 6H2V8H4V6Z" fill="white" />
+      <path d="M6 6H4V8H6V6Z" fill="white" />
+      <path d="M8 6H6V8H8V6Z" fill="white" />
+      <path d="M10 6H8V8H10V6Z" fill="white" />
+      <path d="M12 6H10V8H12V6Z" fill="white" />
+      <path d="M14 6H12V8H14V6Z" fill="white" />
+      <path d="M16 6H14V8H16V6Z" fill="white" />
+      <path d="M18 6H16V8H18V6Z" fill="white" />
+      <path d="M20 6H18V8H20V6Z" fill="white" />
+      <path d="M6 8H4V10H6V8Z" fill="white" />
+      <path d="M8 8H6V10H8V8Z" fill="white" />
+      <path d="M10 8H8V10H10V8Z" fill="white" />
+      <path d="M12 8H10V10H12V8Z" fill="white" />
+      <path d="M14 8H12V10H14V8Z" fill="white" />
+      <path d="M16 8H14V10H16V8Z" fill="white" />
+      <path d="M18 8H16V10H18V8Z" fill="white" />
+      <path d="M20 8H18V10H20V8Z" fill="white" />
+      <path d="M8 10H6V12H8V10Z" fill="white" />
+      <path d="M10 10H8V12H10V10Z" fill="white" />
+      <path d="M12 10H10V12H12V10Z" fill="white" />
+      <path d="M14 10H12V12H14V10Z" fill="white" />
+      <path d="M16 10H14V12H16V10Z" fill="white" />
+      <path d="M18 10H16V12H18V10Z" fill="white" />
+      <path d="M20 10H18V12H20V10Z" fill="white" />
+      <path d="M8 12H6V14H8V12Z" fill="white" />
+      <path d="M10 12H8V14H10V12Z" fill="white" />
+      <path d="M12 12H10V14H12V12Z" fill="white" />
+      <path d="M14 12H12V14H14V12Z" fill="white" />
+      <path d="M16 12H14V14H16V12Z" fill="white" />
+      <path d="M18 12H16V14H18V12Z" fill="white" />
+      <path d="M10 14H8V16H10V14Z" fill="white" />
+      <path d="M12 14H10V16H12V14Z" fill="white" />
+      <path d="M14 14H12V16H14V14Z" fill="white" />
+      <path d="M16 14H14V16H16V14Z" fill="white" />
+      <path d="M4 16H2V18H4V16Z" fill="white" />
+      <path d="M6 16H4V18H6V16Z" fill="white" />
+      <path d="M8 16H6V18H8V16Z" fill="white" />
+      <path d="M10 16H8V18H10V16Z" fill="white" />
+      <path d="M12 16H10V18H12V16Z" fill="white" />
+      <path d="M14 16H12V18H14V16Z" fill="white" />
+      <path d="M6 18H4V20H6V18Z" fill="white" />
+      <path d="M8 18H6V20H8V18Z" fill="white" />
+      <path d="M10 18H8V20H10V18Z" fill="white" />
+    </svg>
+  );
+};
+
+export default Twitter;

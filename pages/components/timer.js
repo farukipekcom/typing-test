@@ -5,9 +5,11 @@ export const Timer = ({
   setCountDownStart,
   timer,
   setTimer,
+  done,
+  setDone,
 }) => {
-  const Ref = useRef(null);
   const [working, setWorking] = useState(false);
+  const Ref = useRef(null);
   const getTimeRemaining = (e) => {
     const total = Date.parse(e) - Date.parse(new Date());
     const seconds = Math.floor((total / 1000) % 60);
