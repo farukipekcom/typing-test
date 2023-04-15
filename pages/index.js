@@ -1,13 +1,14 @@
 import { useRef, useState, useEffect } from "react";
 import Play from "./components/icons/play";
 import Reset from "./components/icons/reset";
-import Facebook from "./components/icons/facebook";
-import Twitter from "./components/icons/twitter";
-import Linkedin from "./components/icons/linkedin";
 import { Timer } from "./components/timer";
 import words from "./components/words.json";
+import Result from "./components/result/result";
 export default function Home() {
   const [countDownStart, setCountDownStart] = useState(false);
+  const [keystrokes, setKeystrokes] = useState(0);
+  const [correctWordCount, setCorrectWordCount] = useState(0);
+  const [wrongWordCount, setWrongWordCount] = useState(0);
   const [done, setDone] = useState(false);
   const [working, setWorking] = useState(false);
   const [timer, setTimer] = useState(false);
@@ -32,6 +33,7 @@ export default function Home() {
   }, [setWordList]);
   const onChange = (e) => {
     e.preventDefault();
+    setKeystrokes(keystrokes + 1);
     setWord(e.target.value);
   };
   const onKeyPressed = (e) => {
@@ -40,8 +42,12 @@ export default function Home() {
         setWord("");
         wordList.shift();
         console.log("CORRECT!");
+        setCorrectWordCount(correctWordCount + 1);
       } else {
         console.log("WRONG!");
+        wordList.shift();
+        setWord("");
+        setWrongWordCount(wrongWordCount + 1);
       }
     }
   };
@@ -89,47 +95,11 @@ export default function Home() {
             </>
           )}
           {done && (
-            <div className="summary">
-              <div className="summary-box">
-                <div className="summary-box-title">RESULT</div>
-                <div className="summary-box-list">
-                  <div className="summary-box-list-item">
-                    <div className="summary-box-list-item-text">Keystrokes</div>
-                    <div className="summary-box-list-item-number">281</div>
-                  </div>
-                  <div className="summary-box-list-item">
-                    <div className="summary-box-list-item-text">Accuracy</div>
-                    <div className="summary-box-list-item-number">86.52%</div>
-                  </div>
-                  <div className="summary-box-list-item">
-                    <div className="summary-box-list-item-text">
-                      Correct words
-                    </div>
-                    <div className="summary-box-list-item-number">47</div>
-                  </div>
-                  <div className="summary-box-list-item">
-                    <div className="summary-box-list-item-text">
-                      Wrong words
-                    </div>
-                    <div className="summary-box-list-item-number">7</div>
-                  </div>
-                </div>
-                <div className="summary-box-share">
-                  <div className="summary-box-share-item facebook">
-                    <Facebook />
-                    <span>SHARE</span>
-                  </div>
-                  <div className="summary-box-share-item twitter">
-                    <Twitter />
-                    <span>SHARE</span>
-                  </div>
-                  <div className="summary-box-share-item linkedin">
-                    <Linkedin />
-                    <span>SHARE</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Result
+              keystrokes={keystrokes}
+              correctWordCount={correctWordCount}
+              wrongWordCount={wrongWordCount}
+            />
           )}
           <div className="buttons">
             <div className="play" onClick={handleClick}>
