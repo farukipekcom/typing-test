@@ -4,6 +4,7 @@ import Reset from "./components/icons/reset";
 import { Timer } from "./components/timer";
 import words from "./components/words.json";
 import Result from "./components/result/result";
+import Button from "./components/button/button";
 export default function Home() {
   const [countDownStart, setCountDownStart] = useState(false);
   const [keystrokes, setKeystrokes] = useState(0);
@@ -103,12 +104,10 @@ export default function Home() {
           )}
           <div className="buttons">
             <div className="play" onClick={handleClick}>
-              <Play />
-              <span>PLAY</span>
+              <Button text={"PLAY"} Svg={Play} />
             </div>
             <div className="reset" onClick={resetList}>
-              <Reset />
-              <span>RESET</span>
+              <Button text={"RESET"} Svg={Reset} />
             </div>
           </div>
         </div>
