@@ -1,9 +1,11 @@
 import styles from "./button.module.scss";
-export const Button = ({ text, Svg, onClick }) => {
+import Play from "../icons/play";
+import Reset from "../icons/reset";
+export const Button = ({ text, onClick }) => {
   return (
     <div className="play" onClick={onClick}>
       <div className={styles.play}>
-        <Svg />
+        {text === "PLAY" ? <Play /> : <Reset />}
         <span>{text}</span>
       </div>
     </div>

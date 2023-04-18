@@ -1,10 +1,8 @@
 import { useRef, useState, useEffect } from "react";
-import Play from "./components/icons/play";
-import Reset from "./components/icons/reset";
 import { Timer } from "./components/timer";
 import words from "./components/words.json";
 import Result from "./components/result/result";
-import Button from "./components/button/button";
+import { Button } from "./components/button/button";
 export default function Home() {
   const [countDownStart, setCountDownStart] = useState(false);
   const [keystrokes, setKeystrokes] = useState(0);
@@ -106,8 +104,8 @@ export default function Home() {
             />
           )}
           <div className="buttons">
-            <Button text={"PLAY"} Svg={Play} onClick={handleClick} />
-            <Button text={"RESET"} Svg={Reset} onClick={resetList} />
+            <Button text={"PLAY"} onClick={handleClick} />
+            <Button text={"RESET"} onClick={resetList} />
           </div>
         </div>
       </div>
