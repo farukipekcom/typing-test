@@ -1,8 +1,5 @@
-import React from "react";
 import styles from "./result.module.scss";
-import Facebook from "../icons/facebook";
-import Twitter from "../icons/twitter";
-import Linkedin from "../icons/linkedin";
+import Share from "../share/share";
 export const Result = ({ keystrokes, correctWordCount, wrongWordCount }) => {
   return (
     <div className={styles.result}>
@@ -22,20 +19,7 @@ export const Result = ({ keystrokes, correctWordCount, wrongWordCount }) => {
             <div className={styles.number}>{wrongWordCount}</div>
           </div>
         </div>
-        <div className={styles.share}>
-          <div className={`${styles.shareItem} ${styles.facebook}`}>
-            <Facebook />
-            <span>SHARE</span>
-          </div>
-          <div className={`${styles.shareItem} ${styles.twitter}`}>
-            <Twitter />
-            <span>SHARE</span>
-          </div>
-          <div className={`${styles.shareItem} ${styles.linkedin}`}>
-            <Linkedin />
-            <span>SHARE</span>
-          </div>
-        </div>
+        <Share />
       </div>
     </div>
   );
