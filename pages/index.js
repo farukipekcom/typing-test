@@ -19,6 +19,9 @@ export default function Home() {
     resetList();
     setCountDownStart(true);
     setDone(false);
+    setKeystrokes(0);
+    setCorrectWordCount(0);
+    setWrongWordCount(0);
   };
   const [wordList, setWordList] = useState([]);
   const [word, setWord] = useState();
@@ -103,12 +106,8 @@ export default function Home() {
             />
           )}
           <div className="buttons">
-            <div className="play" onClick={handleClick}>
-              <Button text={"PLAY"} Svg={Play} />
-            </div>
-            <div className="reset" onClick={resetList}>
-              <Button text={"RESET"} Svg={Reset} />
-            </div>
+            <Button text={"PLAY"} Svg={Play} onClick={handleClick} />
+            <Button text={"RESET"} Svg={Reset} onClick={resetList} />
           </div>
         </div>
       </div>
