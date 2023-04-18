@@ -1,11 +1,12 @@
 import styles from "./button.module.scss";
-import Play from "../icons/play";
-import Reset from "../icons/reset";
+import React from "react";
+import ButtonBackground from "../icons/button.svg";
+
 export const Button = ({ text, onClick }) => {
   return (
-    <div className="play" onClick={onClick}>
-      <div className={styles.play}>
-        {text === "PLAY" ? <Play /> : <Reset />}
+    <div onClick={onClick}>
+      <div className={styles.button}>
+        <ButtonBackground />
         <span>{text}</span>
       </div>
     </div>

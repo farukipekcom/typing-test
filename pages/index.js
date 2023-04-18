@@ -105,7 +105,7 @@ export default function Home() {
           )}
           <div className="buttons">
             <Button text={"PLAY"} onClick={handleClick} />
-            <Button text={"RESET"} onClick={resetList} />
+            {/* <Button text={"RESET"} onClick={resetList} /> */}
           </div>
         </div>
       </div>

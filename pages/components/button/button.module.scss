@@ -1,40 +1,23 @@
-.play {
-  position: relative;
+.button {
   cursor: pointer;
   width: 190px;
   height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  svg {
-    position: absolute;
-  }
   top: 0px;
   font-family: "Bungee", cursive;
   font-size: 28px;
   letter-spacing: 0.2em;
-  -webkit-text-stroke: 1px #620c0c;
-  span {
-    z-index: 99;
-  }
-}
-.reset {
-  position: relative;
-  cursor: pointer;
-  width: 190px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   svg {
     position: absolute;
   }
-  top: 0px;
-  font-family: "Bungee", cursive;
-  font-size: 28px;
-  letter-spacing: 0.2em;
-  -webkit-text-stroke: 1px #620c0c;
   span {
     z-index: 99;
+  }
+  &:hover {
+    span {
+      color: rgb(206, 206, 206);
+    }
   }
 }
