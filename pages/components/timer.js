@@ -8,6 +8,7 @@ export const Timer = ({
   done,
   setDone,
 }) => {
+  console.log("BAK", countDownStart);
   const [working, setWorking] = useState(false);
   const Ref = useRef(null);
   const getTimeRemaining = (e) => {
@@ -32,7 +33,7 @@ export const Timer = ({
     }
   };
   const clearTimer = (e) => {
-    setTimer("00:03");
+    // setTimer("00:03");
     if (Ref.current) clearInterval(Ref.current);
     const id = setInterval(() => {
       startTimer(e);
@@ -45,23 +46,15 @@ export const Timer = ({
     return deadline;
   };
   useEffect(() => {
-    countDownStart && clearTimer(getDeadTime());
+    countDownStart === true ? clearTimer(getDeadTime()) : "";
     timer === "-00:01" && setWorking(!working);
-    setCountDownStart(false);
+    // setCountDownStart(false);
   }, [countDownStart]);
 
   const onClickReset = () => {
     clearTimer(getDeadTime());
     setWorking(!working);
   };
-  return (
-    <>
-      {working === true
-        ? "00:03"
-        : working && timer === "00:00"
-        ? "TIME OVER!"
-        : timer}
-    </>
-  );
+  return <>{timer}</>;
 };
 export default Timer;

@@ -9,17 +9,21 @@ export default function Home() {
   const [correctWordCount, setCorrectWordCount] = useState(0);
   const [wrongWordCount, setWrongWordCount] = useState(0);
   const [done, setDone] = useState(false);
+  const [first, setFirst] = useState(true);
   const [working, setWorking] = useState(false);
-  const [timer, setTimer] = useState(false);
+  const [timer, setTimer] = useState("00:03");
   const ref = useRef();
   const handleClick = () => {
-    // ref.current.focus();
+    done === false && ref.current.focus();
+    setTimer("00:03");
+    setFirst(false);
     resetList();
     setCountDownStart(true);
     setDone(false);
     setKeystrokes(0);
     setCorrectWordCount(0);
     setWrongWordCount(0);
+    setWord("");
   };
   const [wordList, setWordList] = useState([]);
   const [word, setWord] = useState();
@@ -39,8 +43,11 @@ export default function Home() {
     setWord(e.target.value);
   };
   const onKeyPressed = (e) => {
+    setCountDownStart(true);
+    setFirst(false);
+    console.log("TEST");
     if (e.code === "Space" || e.code === "Enter") {
-      if (e.target.value === wordList[0]) {
+      if (String(e.target.value).toLocaleLowerCase() === wordList[0]) {
         setWord("");
         wordList.shift();
         console.log("CORRECT!");
@@ -56,7 +63,6 @@ export default function Home() {
   useEffect(() => {
     timer === "00:00" && setDone(!done);
   }, [timer]);
-  console.log(timer);
   return (
     <>
       <div className="main">
@@ -75,14 +81,16 @@ export default function Home() {
                 </div>
               </div>
               <div className="input">
-                {timer > "00:00" && (
-                  <input
-                    autoFocus
-                    onKeyDown={(e) => onKeyPressed(e)}
-                    onChange={onChange}
-                    value={word === " " ? "" : word}
-                  />
-                )}
+                <input
+                  ref={ref}
+                  autoFocus
+                  onKeyDown={(e) => onKeyPressed(e)}
+                  onChange={onChange}
+                  value={word === " " ? "" : word}
+                  placeholder={
+                    first && "Press the play button and start typing the words"
+                  }
+                />
               </div>
               <div className="time">
                 <Timer
