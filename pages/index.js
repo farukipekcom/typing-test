@@ -10,7 +10,6 @@ export default function Home() {
   const [wrongWordCount, setWrongWordCount] = useState(0);
   const [done, setDone] = useState(false);
   const [first, setFirst] = useState(true);
-  const [working, setWorking] = useState(false);
   const [timer, setTimer] = useState("00:03");
   const ref = useRef();
   const [word, setWord] = useState("");
@@ -45,7 +44,6 @@ export default function Home() {
   const onKeyPressed = (e) => {
     setCountDownStart(true);
     setFirst(false);
-    console.log("TEST", String(e.target.value));
     if (e.code === "Space" || e.code === "Enter") {
       if (
         String(e.target.value).toLocaleLowerCase().replace(/\s/g, "") ===

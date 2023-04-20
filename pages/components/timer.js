@@ -8,7 +8,6 @@ export const Timer = ({
   done,
   setDone,
 }) => {
-  console.log("BAK", countDownStart);
   const [working, setWorking] = useState(false);
   const Ref = useRef(null);
   const getTimeRemaining = (e) => {
