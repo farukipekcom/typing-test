@@ -13,9 +13,10 @@ export default function Home() {
   const [working, setWorking] = useState(false);
   const [timer, setTimer] = useState("00:03");
   const ref = useRef();
+  const [word, setWord] = useState("");
   const handleClick = () => {
     done === false && ref.current.focus();
-    setTimer("00:03");
+    setTimer("00:10");
     setFirst(false);
     resetList();
     setCountDownStart(true);
@@ -26,7 +27,6 @@ export default function Home() {
     setWord("");
   };
   const [wordList, setWordList] = useState([]);
-  const [word, setWord] = useState();
   let tempList = [];
   const resetList = () => {
     for (let i = 0; i < words.length; i++) {
@@ -45,18 +45,21 @@ export default function Home() {
   const onKeyPressed = (e) => {
     setCountDownStart(true);
     setFirst(false);
-    console.log("TEST");
+    console.log("TEST", String(e.target.value));
     if (e.code === "Space" || e.code === "Enter") {
-      if (String(e.target.value).toLocaleLowerCase() === wordList[0]) {
-        setWord("");
+      if (
+        String(e.target.value).toLocaleLowerCase().replace(/\s/g, "") ===
+        wordList[0]
+      ) {
         wordList.shift();
         console.log("CORRECT!");
         setCorrectWordCount(correctWordCount + 1);
+        setWord("");
       } else {
         console.log("WRONG!");
         wordList.shift();
-        setWord("");
         setWrongWordCount(wrongWordCount + 1);
+        setWord("");
       }
     }
   };
@@ -86,9 +89,11 @@ export default function Home() {
                   autoFocus
                   onKeyDown={(e) => onKeyPressed(e)}
                   onChange={onChange}
-                  value={word === " " ? "" : word}
+                  value={word}
                   placeholder={
-                    first && "Press the play button and start typing the words"
+                    first === true
+                      ? "Press the play button and start typing the words"
+                      : ""
                   }
                 />
               </div>
