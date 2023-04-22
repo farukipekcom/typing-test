@@ -4,71 +4,65 @@ import words from "./components/words.json";
 import Result from "./components/result/result";
 import { Button } from "./components/button/button";
 export default function Home() {
-  const [countDownStart, setCountDownStart] = useState(false);
-  const [keystrokes, setKeystrokes] = useState(0);
+  const duration = "00:03";
+  const [start, setStart] = useState(false);
+  const [keyStrokes, setKeyStrokes] = useState(0);
   const [correctWordCount, setCorrectWordCount] = useState(0);
   const [wrongWordCount, setWrongWordCount] = useState(0);
-  const [done, setDone] = useState(false);
-  const [first, setFirst] = useState(true);
-  const [timer, setTimer] = useState("00:03");
-  const ref = useRef();
+  const [timer, setTimer] = useState(duration);
+  const [finished, setFinished] = useState(false);
   const [word, setWord] = useState("");
-  const handleClick = () => {
-    done === false && ref.current.focus();
-    setTimer("00:10");
-    setFirst(false);
-    resetList();
-    setCountDownStart(true);
-    setDone(false);
-    setKeystrokes(0);
-    setCorrectWordCount(0);
-    setWrongWordCount(0);
-    setWord("");
-  };
   const [wordList, setWordList] = useState([]);
+  const ref = useRef();
   let tempList = [];
-  const resetList = () => {
-    for (let i = 0; i < words.length; i++) {
+  const shuffleList = () => {
+    for (let i in words) {
       tempList[i] = words[Math.floor(Math.random() * words.length)];
     }
     setWordList(tempList);
   };
-  useEffect(() => {
-    resetList();
-  }, [setWordList]);
+  const handleClick = () => {
+    setStart(true);
+    setKeyStrokes(0);
+    setCorrectWordCount(0);
+    setWrongWordCount(0);
+    setTimer(duration);
+    finished === false && ref.current.focus();
+    setFinished(false);
+    finished && shuffleList();
+    setWord("");
+  };
   const onChange = (e) => {
     e.preventDefault();
-    setKeystrokes(keystrokes + 1);
+    setKeyStrokes(keyStrokes + 1);
     setWord(e.target.value);
   };
   const onKeyPressed = (e) => {
-    setCountDownStart(true);
-    setFirst(false);
+    setStart(true);
     if (e.code === "Space" || e.code === "Enter") {
       if (
         String(e.target.value).toLocaleLowerCase().replace(/\s/g, "") ===
         wordList[0]
       ) {
-        wordList.shift();
-        console.log("CORRECT!");
+        // if word is true
         setCorrectWordCount(correctWordCount + 1);
-        setWord("");
       } else {
-        console.log("WRONG!");
-        wordList.shift();
+        // if word is false
         setWrongWordCount(wrongWordCount + 1);
-        setWord("");
       }
+      wordList.shift();
+      setWord("");
     }
   };
   useEffect(() => {
-    timer === "00:00" && setDone(!done);
-  }, [timer]);
+    shuffleList();
+  }, []);
+
   return (
     <>
       <div className="main">
         <div className="container">
-          {!done && (
+          {!finished && (
             <>
               <div className="list">
                 <div className="background">
@@ -89,7 +83,7 @@ export default function Home() {
                   onChange={onChange}
                   value={word}
                   placeholder={
-                    first === true
+                    start === false
                       ? "Press the play button and start typing the words"
                       : ""
                   }
@@ -97,27 +91,28 @@ export default function Home() {
               </div>
               <div className="time">
                 <Timer
-                  countDownStart={countDownStart}
-                  setCountDownStart={setCountDownStart}
+                  start={start}
                   timer={timer}
                   setTimer={setTimer}
-                  done={done}
-                  setDone={setDone}
+                  setFinished={setFinished}
                 />
               </div>
             </>
           )}
-          {done && (
+          {finished && (
             <Result
-              keystrokes={keystrokes}
+              keyStrokes={keyStrokes}
               correctWordCount={correctWordCount}
               wrongWordCount={wrongWordCount}
             />
           )}
-          <div className="buttons">
-            <Button text={"PLAY"} onClick={handleClick} />
-            {/* <Button text={"RESET"} onClick={resetList} /> */}
-          </div>
+          {start === false || finished === true ? (
+            <div className="buttons">
+              <Button text={"START"} onClick={handleClick} />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>

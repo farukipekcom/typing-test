@@ -1,6 +1,6 @@
 import styles from "./result.module.scss";
 import Share from "../share/share";
-export const Result = ({ keystrokes, correctWordCount, wrongWordCount }) => {
+export const Result = ({ keyStrokes, correctWordCount, wrongWordCount }) => {
   return (
     <div className={styles.result}>
       <div className={styles.box}>
@@ -8,7 +8,7 @@ export const Result = ({ keystrokes, correctWordCount, wrongWordCount }) => {
         <div className={styles.list}>
           <div className={styles.item}>
             <div className={styles.text}>Keystrokes</div>
-            <div className={styles.number}>{keystrokes}</div>
+            <div className={styles.number}>{keyStrokes}</div>
           </div>
           <div className={styles.item}>
             <div className={styles.text}>Correct words</div>

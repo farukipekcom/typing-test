@@ -1,13 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-
-export const Timer = ({
-  countDownStart,
-  setCountDownStart,
-  timer,
-  setTimer,
-  done,
-  setDone,
-}) => {
+export const Timer = ({ start, timer, setTimer, setFinished }) => {
   const [working, setWorking] = useState(false);
   const Ref = useRef(null);
   const getTimeRemaining = (e) => {
@@ -45,10 +37,13 @@ export const Timer = ({
     return deadline;
   };
   useEffect(() => {
-    countDownStart === true ? clearTimer(getDeadTime()) : "";
-    timer === "-00:01" && setWorking(!working);
-    // setCountDownStart(false);
-  }, [countDownStart]);
+    start === true ? clearTimer(getDeadTime()) : "";
+    // timer === "-00:01" && setWorking(!working);
+    // setStart(false);
+  }, [start]);
+  useEffect(() => {
+    timer === "00:00" && setFinished(true);
+  }, [setFinished, timer]);
 
   const onClickReset = () => {
     clearTimer(getDeadTime());
